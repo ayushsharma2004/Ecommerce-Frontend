@@ -10,14 +10,14 @@
 }
 
 /* 
-.best_seller {
+.product_list {
     width: 100vw !important;
     height: 100% !important;
     margin-top: 10vh;
     padding: 1vw;
 }
 
-.best_seller h2 {
+.product_list h2 {
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -26,7 +26,7 @@
     font-style: normal;
 }
 
-.best_seller .cards {
+.product_list .cards {
     width: 100vw;
     margin-top: 10vh;
     display: flex;
@@ -35,7 +35,7 @@
     gap: 1vw;
 }
 
-.best_seller .cards .card {
+.product_list .cards .card {
     width: 18vw;
     height: 59vh;
     display: flex;
@@ -76,14 +76,14 @@
     font-style: normal;
 
 } */
-.best_seller {
+.product_list {
     width: 100vw;
-    height: 100%;
+    /* height: 100%; */
     margin-top: 10vh;
     padding: 1vw;
 }
 
-.best_seller h2 {
+.product_list h2 {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -92,26 +92,31 @@
     font-style: normal;
 }
 
-.best_seller .cards {
+.product_list .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 1vw;
     /* Ensure exactly 5 cards per row */
     /* Adjust min-width as needed */
     gap: 1vw;
-    margin-top: 7vh;
+    margin-top: 5vh;
 }
 
-.best_seller .card {
+.product_list .card {
     display: flex;
     flex-direction: column;
     background: white;
     border-radius: 10px;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     overflow: hidden;
+    max-width: 20vw;
+    cursor: pointer;
+    /* Set a maximum width for the cards */
+    /* margin: 0 auto; */
+    /* Center the single card */
 }
 
-.best_seller .crdimg {
+.product_list .crdimg {
     width: 100%;
     height: 0;
     padding-top: 100%;
@@ -119,7 +124,7 @@
     position: relative;
 }
 
-.best_seller .crdimg img {
+.product_list .crdimg img {
     position: absolute;
     top: 0;
     left: 0;
@@ -128,7 +133,7 @@
     object-fit: cover;
 }
 
-.best_seller .crd_content {
+.product_list .crd_content {
     padding: 0.5vh 0.5vw;
     display: flex;
     flex-direction: column;
@@ -136,30 +141,48 @@
     text-align: center;
 }
 
-.best_seller .crd_name {
+.product_list .crd_name {
     font-size: 0.9rem;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
+    margin-bottom: 0.5vh !important;
 }
 
-.best_seller .crd_rating {
+.product_list .crd_rating {
     display: flex;
     justify-content: center;
-    margin: 0.1rem 0;
+    margin: 0 0 0.7vh 0;
 }
 
-.best_seller .material-symbols-outlined {
-    font-size: 1.2rem;
+.product_list .crd_rating .star {
+    font-size: 1.05rem;
     color: #FFD700;
-    /* Gold color for stars */
+    /* background-color: #FFD700; */
 }
 
-.best_seller .crd_price {
-    font-size: 1.1rem;
-    color: #333;
-    margin-top: 0.1rem;
+.product_list .crd_price {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #555;
 }
+
+/* Ensure single card doesn't take full viewport */
+@media (min-width: 768px) {
+    .product_list .cards {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .product_list .card {
+        max-width: 90vw;
+        /* Adjust as needed for smaller screens */
+    }
+}
+
+
 
 .lato-regular {
     font-family: "Lato", sans-serif;

@@ -6,10 +6,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faPlus, faMinus, faCartShopping, faShoppingCart, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import p1 from '../images/polo3.jpg'
 import '../styles/productDetails.css';
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
+    const { pid } = useParams();
+    const [product, setProduct] = useState(1);
     const [showMore, setShowMore] = useState(false);
     const [quantity, setQuantity] = useState(1);
+
+
+    const getProductDetails = async () => {
+        console.log('get');
+        try {
+            console.log('get1');
+            const { data } = await axios.get(
+                `${process.env.REACT_APP_API}/api/v1/product/get_product_pid?pid=${pid}`
+            );
+            console.log('get2');
+            console.log(data);
+            if (data) {
+                setProduct(data);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error('Something went wrong while getting category');
+        }
+    }
+
+    useEffect(() => {
+        // getAllCategories();
+        getProductDetails();
+    }, []);
 
     const offers = [
         { id: 1, title: "Offer 1", description: "Get 10% off" },

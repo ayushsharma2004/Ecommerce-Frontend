@@ -7,6 +7,8 @@ import toast from 'react-hot-toast';
 import useCategory from '../../hooks/useCategory.js';
 import '../../styles/header.css'
 import logo1 from '../../images/logo5.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { GiMagnifyingGlass } from 'react-icons/gi';
 
 const Header = () => {
@@ -14,6 +16,10 @@ const Header = () => {
   const categories = useCategory();
   const [isRegistered, setIsRegistered] = useState(false);
   const navigate = useNavigate();
+
+  const logoClick = () => {
+    navigate('/');
+  }
 
   const handleLogout = () => {
     setAuth({
@@ -39,7 +45,7 @@ const Header = () => {
       </div>
       <div id='navbar1' className="navbar1">
         <div className="logo">
-          <img src={logo1} alt="" />
+          <img src={logo1} alt="" onClick={logoClick} />
         </div>
         <div className="searchbar">
           <div className="search">
@@ -59,6 +65,9 @@ const Header = () => {
             </ul>
           </li>
           <li>FAQ</li>
+          <li>
+            <FontAwesomeIcon icon={faHeart} style={{ 'color': 'black', "fontSize": "1.3rem" }} />
+          </li>
           <li className="profile">
             <Link className='login_link' to='/login'>Login</Link>
           </li>
